@@ -1,7 +1,7 @@
 // Classes de base Component. Contient :
-//     - Abstract Component
-//     - Abstract Graphic Component
-//     - Abstract Physic Component
+//     - Component
+//     - Graphic Component
+//     - Physic Component
 #include <iostream>
 
 
