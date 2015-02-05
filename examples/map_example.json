@@ -1,0 +1,15 @@
+{
+    "name" : "example",
+    "bloc_types" : [
+        {"name":"A", "points" : [{"x":0,"y":0}, {"x":1,"y":1}]},
+        {"name":"B", "points" : [{"x":0,"y":0}, {"x":1,"y":1}]}
+    ],
+    "map_height" : 4,
+    "map_Width" : 4,
+    "map" : [
+    ["A", "B", "B", "B"],
+    ["A", "B", "B", "B"],
+    ["A", "B", "B", "B"],
+    ["A", "B", "B", "B"],
+    ]
+}
