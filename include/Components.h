@@ -44,6 +44,7 @@ namespace Component
         void changePos(PhysicVector newPosition);
 
         void calcCollision(std::vector<PhysicComponent&> closerObjects);
+        Polygon getHitBox();
 
     private:
         PhysicVector pos;
