@@ -3,6 +3,11 @@
 
 namespace Component
 {
+    Vector::Vector()
+    {
+        this->x = 0;
+        this->y = 0;
+    }
     Vector::Vector(int x, int y)
     {
         this->x = x;

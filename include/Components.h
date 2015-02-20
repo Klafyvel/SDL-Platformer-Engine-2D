@@ -4,51 +4,70 @@
 //     - Physic Component
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 namespace Component
 {
-    class PhysicVector
+    class Vector
     {
     public:
-        PhysicVector(int x, int y);
+        Vector();
+        Vector(int x, int y);
         int getX();
         int getY();
         int getNorm();
 
         void print(std::ostream &stream) const;
 
-        void operator+=(PhysicVector const& a);
+        void operator+=(Vector const& a);
     private:
         int x;
         int y;
     };
-    PhysicVector operator+(PhysicVector a, PhysicVector b);
-    std::ostream& operator<<( std::ostream &stream, PhysicVector const& v);
+    Vector operator+(Vector a, Vector b);
+    std::ostream& operator<<( std::ostream &stream, Vector const& v);
+    class Point
+    {
+    public:
+        Point(int x, int y);
+        void setX(int x);
+        void setY(int y);
+        int getX();
+        int getY();
+    private:
+        int x;
+        int y;
+    };
 
     class Polygon
     {
     public:
         Polygon();
-        Polygon(std::vector<PhysicVector> &list);
-        static Polygon& Triangle(PhysicVector a, PhysicVector b, PhysicVector c);
-        static Polygon& Rectangle(PhysicVector a, PhysicVector b, PhysicVector c, PhysicVector d);
-        void addPoint(PhysicVector p);
+        Polygon(std::vector<Point> &list);
+        static Polygon Triangle(Point a, Point b, Point c);
+        static Polygon Rectangle(Point a, Point b, Point c, Point d);
+        void addPoint(Point p);
 
-        std::vector<PhysicVector> getOrthogonalsVect();
+        std::vector<Vector> getOrthogonalsVect();
+    private:
+        std::vector<Point> points;
     };
     class PhysicComponent
     {
     public:
-        PhysicComponent(int masse, PhysicVector pos, Polygon polygon);
-        PhysicVector getPosition();
-        void changePos(PhysicVector newPosition);
+        PhysicComponent();
+        PhysicComponent(int bulk, Vector pos, Polygon geometry);
+        Vector getPosition();
+        void changePos(Vector newPosition);
 
-        void calcCollision(std::vector<PhysicComponent&> closerObjects);
+        void calcCollision(std::vector<PhysicComponent*> closerObjects);
         Polygon getHitBox();
 
     private:
-        PhysicVector pos;
-        PhysicVector changes;
+        Vector pos;
+        Vector changes;
+        Polygon geometry;
+        int bulk;
     
     };
 }
