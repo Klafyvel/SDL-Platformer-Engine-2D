@@ -3,40 +3,40 @@
 
 namespace Component
 {
-    PhysicVector::PhysicVector(int x, int y)
+    Vector::Vector(int x, int y)
     {
         this->x = x;
         this->y = y;
     }
-    int PhysicVector::getX()
+    int Vector::getX()
     {
         return this->x;
     }
-    int PhysicVector::getY()
+    int Vector::getY()
     {
         return this->y;
     }
-    int PhysicVector::getNorm()
+    int Vector::getNorm()
     {
         return sqrt(pow(this->x, 2) + pow(this->y, 2));
     }
-    void PhysicVector::print(std::ostream &stream) const
+    void Vector::print(std::ostream &stream) const
     {
         stream << '(' << this->x << ',' << this->y << ')';
     }
-    void PhysicVector::operator+=(PhysicVector const& a)
+    void Vector::operator+=(Vector const& a)
     {
         this->x += a.x;
         this->y += a.y;
     }
-    PhysicVector operator+(PhysicVector a, PhysicVector b)
+    Vector operator+(Vector a, Vector b)
     {
-        PhysicVector returned(0,0);
+        Vector returned(0,0);
         returned += a;
         returned += b;
         return returned;
     }
-    std::ostream& operator<<( std::ostream &stream, PhysicVector const& v)
+    std::ostream& operator<<( std::ostream &stream, Vector const& v)
     {
         v.print(stream);
         return stream;
